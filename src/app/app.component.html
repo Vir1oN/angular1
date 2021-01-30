@@ -1,0 +1,23 @@
+<h2>No validation form:</h2>
+<form #myForm="ngForm" (ngSubmit)="templateFormSubmit()">
+  <input [(ngModel)]="newUser.name" name="name">
+  <input [(ngModel)]="newUser.age" name="age" type="number">
+  <button>Send</button>
+</form>
+
+<h1>Validation form:</h1>
+<form [formGroup]="userForm" (ngSubmit)="reactiveFormSubmit()">
+  <input [formControl]="userName">
+  <div *ngIf="!userName.valid">
+    <p>The name must contain more than 1 letter</p>
+  </div>
+
+  <input [formControl]="userAge" [type]="['number']">
+  <div *ngIf="!userAge.valid">
+    <p>The age must be greater than 0</p>
+  </div>
+
+  <button [disabled]="!userForm.valid">Send</button>
+</form>
+
+<app-users [users]="allUsers"></app-users>
