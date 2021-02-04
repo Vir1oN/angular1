@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {UserService} from './services/user.service';
+import {User} from './interfaces/User';
+import {isEmptyExpression} from '@angular/compiler';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -6,6 +9,10 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-
+  users: User[];
+  color = 'lightblue';
+  constructor(private userService: UserService) {
+    this.userService.getUsers().subscribe(value => this.users = value);
+  }
 }
 
