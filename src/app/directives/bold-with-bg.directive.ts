@@ -1,9 +1,9 @@
-import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
+import {Directive, ElementRef, Input, OnChanges, OnInit, Renderer2, SimpleChanges} from '@angular/core';
 
 @Directive({
   selector: '[appBoldWithBg]'
 })
-export class BoldWithBgDirective implements OnInit{
+export class BoldWithBgDirective implements OnInit, OnChanges{
   @Input()
   appBoldWithBg: string;
   constructor(private element: ElementRef, private renderer: Renderer2) {
@@ -14,4 +14,7 @@ export class BoldWithBgDirective implements OnInit{
     this.renderer.setStyle(this.element.nativeElement, 'font-weight', 'bold');
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.renderer.setStyle(this.element.nativeElement, 'background', this.appBoldWithBg);
+  }
 }

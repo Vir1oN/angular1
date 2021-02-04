@@ -14,5 +14,9 @@ export class AppComponent {
   constructor(private userService: UserService) {
     this.userService.getUsers().subscribe(value => this.users = value);
   }
+
+  setColor(color: string): void {
+    this.color = color;
+  }
 }
 

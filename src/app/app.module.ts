@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FormatUsersPipe } from './pipes/format-users.pipe';
 import {HttpClientModule} from '@angular/common/http';
 import { BoldWithBgDirective } from './directives/bold-with-bg.directive';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BoldWithBgDirective } from './directives/bold-with-bg.directive';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
